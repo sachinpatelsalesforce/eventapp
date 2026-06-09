@@ -71,25 +71,25 @@ export default function ConciergePage() {
   }
 
   return (
-    <div className="flex flex-col h-screen max-h-screen">
+    <div className="flex flex-col h-screen max-h-screen bg-[#061528]">
       <Header title="AI Concierge" subtitle="Ask me anything about today's event" />
 
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 max-w-4xl w-full mx-auto">
         {messages.length === 0 && (
           <div className="text-center py-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#0070D2] to-[#1589EE] rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#0070D2] to-[#0B56A8] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#0070D2]/20">
               <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
               </svg>
             </div>
-            <h2 className="text-xl font-bold text-gray-900 mb-1">How can I help?</h2>
-            <p className="text-gray-500 text-sm mb-6">Ask me about sessions, speakers, rooms, or anything about today.</p>
+            <h2 className="text-xl font-bold text-white mb-1">How can I help?</h2>
+            <p className="text-white/50 text-sm mb-6">Ask me about sessions, speakers, rooms, or anything about today.</p>
             <div className="grid gap-2 max-w-sm mx-auto">
               {suggestions.map(s => (
                 <button
                   key={s}
                   onClick={() => send(s)}
-                  className="text-left text-sm text-[#0070D2] bg-blue-50 border border-blue-100 rounded-xl px-4 py-2.5 hover:bg-blue-100 transition-colors"
+                  className="text-left text-sm text-[#5EB3FF] bg-[#0070D2]/10 border border-[#0070D2]/20 rounded-xl px-4 py-2.5 hover:bg-[#0070D2]/20 transition-colors"
                 >
                   {s}
                 </button>
@@ -104,14 +104,14 @@ export default function ConciergePage() {
               className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
                 msg.role === 'user'
                   ? 'bg-[#0070D2] text-white rounded-br-sm'
-                  : 'bg-white border border-gray-100 text-gray-800 rounded-bl-sm shadow-card'
+                  : 'bg-[#0D2137] border border-white/[0.08] text-white/80 rounded-bl-sm'
               }`}
             >
               {msg.content || (msg.role === 'assistant' && streaming && (
                 <span className="inline-flex gap-1">
-                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <span className="w-1.5 h-1.5 bg-white/30 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <span className="w-1.5 h-1.5 bg-white/30 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <span className="w-1.5 h-1.5 bg-white/30 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                 </span>
               ))}
             </div>
@@ -121,7 +121,7 @@ export default function ConciergePage() {
       </div>
 
       {/* Input bar */}
-      <div className="border-t border-gray-100 bg-white px-4 py-3 max-w-4xl w-full mx-auto">
+      <div className="border-t border-white/[0.06] bg-[#061528]/95 backdrop-blur-md px-4 py-3 max-w-4xl w-full mx-auto">
         <div className="flex gap-2">
           <input
             ref={inputRef}
@@ -130,7 +130,7 @@ export default function ConciergePage() {
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(input) } }}
             placeholder="Ask about sessions, speakers, rooms…"
-            className="flex-1 rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:border-[#0070D2] focus:outline-none focus:ring-1 focus:ring-[#0070D2]"
+            className="flex-1 rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2.5 text-sm text-white placeholder-white/30 focus:border-[#0070D2] focus:outline-none focus:ring-1 focus:ring-[#0070D2]"
             disabled={streaming}
           />
           <Button onClick={() => send(input)} disabled={!input.trim() || streaming} size="md">

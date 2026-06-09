@@ -39,16 +39,17 @@ export default function PollsPage() {
       <Header title="Partner Pulse" subtitle="Live polls — results update in real time" />
       <div className="max-w-4xl mx-auto px-4 py-5 space-y-4">
         {!contactId && (
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-[#0070D2]">
-            <Link href="/contact" className="font-semibold hover:underline">Register first</Link> to vote in polls.
+          <div className="bg-[#0070D2]/10 border border-[#0070D2]/20 rounded-2xl p-4 text-sm text-[#5EB3FF]">
+            <Link href="/contact" className="font-semibold hover:underline">Register first</Link>
+            <span className="text-white/60"> to vote in polls.</span>
           </div>
         )}
         {isLoading ? <LoadingSpinner /> : polls?.length === 0 ? (
-          <p className="text-center text-gray-400 py-12">No active polls right now.</p>
+          <p className="text-center text-white/30 py-12">No active polls right now.</p>
         ) : (
           polls?.map(poll => (
             <Card key={poll.id} className="p-5">
-              <h2 className="font-bold text-gray-900 mb-4">{poll.question}</h2>
+              <h2 className="font-bold text-white mb-4">{poll.question}</h2>
               <div className="space-y-2">
                 {poll.options.map(option => {
                   const isSelected = poll.contact_option_id === option.id
@@ -59,24 +60,24 @@ export default function PollsPage() {
                       <button
                         onClick={() => vote(poll.id, option.id)}
                         disabled={!contactId}
-                        className={`w-full text-left rounded-lg border transition-all relative overflow-hidden ${
+                        className={`w-full text-left rounded-xl border transition-all relative overflow-hidden ${
                           isSelected
-                            ? 'border-[#0070D2] bg-blue-50'
-                            : 'border-gray-200 hover:border-gray-300 bg-white'
+                            ? 'border-[#0070D2] bg-[#0070D2]/20'
+                            : 'border-white/10 hover:border-white/20 bg-white/[0.04]'
                         } ${!contactId ? 'cursor-default' : ''}`}
                       >
                         {showResults && (
                           <div
-                            className="absolute inset-y-0 left-0 bg-blue-100/60 transition-all"
+                            className="absolute inset-y-0 left-0 bg-[#0070D2]/20 transition-all"
                             style={{ width: `${option.percentage}%` }}
                           />
                         )}
                         <div className="relative flex items-center justify-between px-3 py-2.5 gap-2">
-                          <span className={`text-sm font-medium ${isSelected ? 'text-[#0070D2]' : 'text-gray-700'}`}>
+                          <span className={`text-sm font-medium ${isSelected ? 'text-[#5EB3FF]' : 'text-white/80'}`}>
                             {option.label}
                           </span>
                           {showResults && (
-                            <span className="text-sm font-bold text-gray-500 flex-shrink-0">
+                            <span className="text-sm font-bold text-white/40 flex-shrink-0">
                               {option.percentage}%
                               <span className="text-xs font-normal ml-1">({option.vote_count})</span>
                             </span>
@@ -88,7 +89,7 @@ export default function PollsPage() {
                 })}
               </div>
               {poll.contact_voted && (
-                <p className="text-xs text-gray-400 mt-3 text-right">
+                <p className="text-xs text-white/30 mt-3 text-right">
                   {poll.options.reduce((s, o) => s + o.vote_count, 0)} votes total · updates live
                 </p>
               )}

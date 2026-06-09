@@ -62,9 +62,9 @@ export default function QuestionsPage() {
         {/* Submit form */}
         {contactId ? (
           <Card className="p-5">
-            <h2 className="font-bold text-gray-900 mb-4">Submit a Question</h2>
+            <h2 className="font-bold text-white mb-4">Submit a Question</h2>
             {submitted && (
-              <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-700">
+              <div className="mb-4 p-3 bg-green-500/15 border border-green-500/25 rounded-xl text-sm text-green-400">
                 Question submitted!
               </div>
             )}
@@ -100,16 +100,16 @@ export default function QuestionsPage() {
           </Card>
         ) : (
           <Card className="p-5 text-center">
-            <p className="text-gray-500 mb-3">Register to submit questions</p>
+            <p className="text-white/50 mb-3">Register to submit questions</p>
             <Link href="/contact"><Button>Register now</Button></Link>
           </Card>
         )}
 
         {/* Topic filter */}
-        <div className="flex gap-2 overflow-x-auto pb-1">
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
           <button
             onClick={() => { setTopicFilter(''); fetchQuestions() }}
-            className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium border ${!topicFilter ? 'bg-[#0070D2] text-white border-[#0070D2]' : 'bg-white text-gray-600 border-gray-200'}`}
+            className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium border ${!topicFilter ? 'bg-[#0070D2] text-white border-[#0070D2]' : 'bg-white/[0.06] text-white/60 border-white/10 hover:border-white/20'}`}
           >
             All
           </button>
@@ -117,7 +117,7 @@ export default function QuestionsPage() {
             <button
               key={t.key}
               onClick={() => { setTopicFilter(t.key); fetchQuestions(t.key) }}
-              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium border ${topicFilter === t.key ? 'bg-[#0070D2] text-white border-[#0070D2]' : 'bg-white text-gray-600 border-gray-200'}`}
+              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium border ${topicFilter === t.key ? 'bg-[#0070D2] text-white border-[#0070D2]' : 'bg-white/[0.06] text-white/60 border-white/10 hover:border-white/20'}`}
             >
               {t.label}
             </button>
@@ -129,18 +129,18 @@ export default function QuestionsPage() {
           <div className="space-y-3">
             {questions.map(q => (
               <Card key={q.id} className="p-4">
-                <p className="text-sm text-gray-900 font-medium leading-snug">{q.question_text}</p>
+                <p className="text-sm text-white font-medium leading-snug">{q.question_text}</p>
                 <div className="flex flex-wrap items-center gap-2 mt-2">
                   {q.topic && (
                     <Badge variant="purple">{QUESTION_TOPICS.find(t => t.key === q.topic)?.label ?? q.topic}</Badge>
                   )}
-                  <span className="text-xs text-gray-400">{q.session_title}</span>
-                  <span className="text-xs text-gray-400">· {q.contact_name}</span>
+                  <span className="text-xs text-white/30">{q.session_title}</span>
+                  <span className="text-xs text-white/30">· {q.contact_name}</span>
                 </div>
               </Card>
             ))}
             {questions.length === 0 && (
-              <p className="text-center text-gray-400 py-8">No questions yet. Be the first to ask!</p>
+              <p className="text-center text-white/30 py-8">No questions yet. Be the first to ask!</p>
             )}
           </div>
         )}

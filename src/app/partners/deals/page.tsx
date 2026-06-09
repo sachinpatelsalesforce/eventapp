@@ -79,7 +79,7 @@ export default function DealsPage() {
       <div>
         <Header title="Deal Board" back={{ href: '/partners', label: 'Partner Hub' }} />
         <div className="max-w-md mx-auto px-4 py-12 text-center">
-          <p className="text-gray-500 mb-4">Register to access your deal board.</p>
+          <p className="text-white/50 mb-4">Register to access your deal board.</p>
           <Link href="/contact"><Button>Register</Button></Link>
         </div>
       </div>
@@ -106,16 +106,16 @@ export default function DealsPage() {
                         {DEAL_STATUSES.find(s => s.key === deal.status)?.label ?? deal.status}
                       </Badge>
                     </div>
-                    <h3 className="font-bold text-gray-900">{deal.target_account}</h3>
-                    <p className="text-sm text-gray-600 mt-1 line-clamp-2">{deal.opportunity_description}</p>
-                    {deal.blockers && <p className="text-xs text-red-600 mt-1">⚠ {deal.blockers}</p>}
-                    {deal.next_steps && <p className="text-xs text-gray-500 mt-1">→ {deal.next_steps}</p>}
+                    <h3 className="font-bold text-white">{deal.target_account}</h3>
+                    <p className="text-sm text-white/60 mt-1 line-clamp-2">{deal.opportunity_description}</p>
+                    {deal.blockers && <p className="text-xs text-red-400 mt-1">⚠ {deal.blockers}</p>}
+                    {deal.next_steps && <p className="text-xs text-white/40 mt-1">→ {deal.next_steps}</p>}
                   </div>
                   <div className="flex gap-2 flex-shrink-0">
-                    <button onClick={() => openEdit(deal)} className="p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">
+                    <button onClick={() => openEdit(deal)} className="p-1.5 text-white/30 hover:text-white/70 rounded-lg hover:bg-white/10">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                     </button>
-                    <button onClick={() => handleDelete(deal)} className="p-1.5 text-gray-400 hover:text-red-500 rounded-lg hover:bg-red-50">
+                    <button onClick={() => handleDelete(deal)} className="p-1.5 text-white/30 hover:text-red-400 rounded-lg hover:bg-red-500/10">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                     </button>
                   </div>
@@ -124,7 +124,7 @@ export default function DealsPage() {
             ))}
             {deals.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-400 mb-4">No deals logged yet.</p>
+                <p className="text-white/30 mb-4">No deals logged yet.</p>
                 <Button onClick={openCreate}>Add your first deal</Button>
               </div>
             )}

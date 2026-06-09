@@ -42,14 +42,14 @@ export default function AgendaPage() {
       <Header title="Agenda" subtitle="Commerce Summit 2026" />
 
       {/* Partner type filter pills */}
-      <div className="sticky top-14 z-30 bg-white border-b border-gray-100 px-4 py-2.5">
+      <div className="sticky top-14 z-30 bg-[#061528]/95 backdrop-blur-md border-b border-white/[0.06] px-4 py-2.5">
         <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-0.5">
           <button
             onClick={() => setFilter(null)}
             className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
               filter === null
                 ? 'bg-[#0070D2] text-white border-[#0070D2]'
-                : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+                : 'bg-white/[0.06] text-white/60 border-white/10 hover:border-white/20'
             }`}
           >
             All Sessions
@@ -61,7 +61,7 @@ export default function AgendaPage() {
               className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
                 filter === pt.key
                   ? 'bg-[#0070D2] text-white border-[#0070D2]'
-                  : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+                  : 'bg-white/[0.06] text-white/60 border-white/10 hover:border-white/20'
               }`}
             >
               {pt.label}
@@ -74,7 +74,7 @@ export default function AgendaPage() {
         {loading ? (
           <LoadingSpinner />
         ) : sessions.length === 0 ? (
-          <div className="text-center py-16 text-gray-400">
+          <div className="text-center py-16 text-white/30">
             <p>No sessions found for this filter.</p>
           </div>
         ) : (
@@ -88,7 +88,7 @@ export default function AgendaPage() {
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <span className="text-xs font-semibold text-[#0070D2] bg-blue-50 px-2 py-0.5 rounded-md">
+                        <span className="text-xs font-semibold text-[#5EB3FF] bg-[#0070D2]/15 px-2 py-0.5 rounded-md">
                           {formatTimeRange(session.start_time, session.end_time)}
                         </span>
                         {session.room && (
@@ -99,7 +99,7 @@ export default function AgendaPage() {
                             href={session.resource_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-xs text-[#0070D2] hover:underline"
+                            className="inline-flex items-center gap-1 text-xs text-[#5EB3FF] hover:underline"
                             onClick={e => e.stopPropagation()}
                           >
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,11 +109,11 @@ export default function AgendaPage() {
                           </a>
                         )}
                       </div>
-                      <h3 className="font-bold text-gray-900 text-base leading-snug">{session.session_title}</h3>
+                      <h3 className="font-bold text-white text-base leading-snug">{session.session_title}</h3>
                     </div>
                     <button
                       onClick={() => toggleInterest(session.id)}
-                      className={`flex-shrink-0 p-1.5 rounded-full transition-colors ${interested ? 'text-amber-500' : 'text-gray-300 hover:text-amber-400'}`}
+                      className={`flex-shrink-0 p-1.5 rounded-full transition-colors ${interested ? 'text-[#5EB3FF]' : 'text-white/30 hover:text-white/60'}`}
                       aria-label={interested ? 'Remove from schedule' : 'Add to schedule'}
                     >
                       <svg className="w-5 h-5" fill={interested ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
@@ -124,7 +124,7 @@ export default function AgendaPage() {
 
                   {session.speaker_name && (
                     <div className="flex items-center gap-2 mt-2">
-                      <div className="w-6 h-6 rounded-full overflow-hidden bg-gray-100 flex-shrink-0">
+                      <div className="w-6 h-6 rounded-full overflow-hidden bg-white/10 flex-shrink-0">
                         <Image
                           src={session.speaker_photo ?? `https://ui-avatars.com/api/?name=${encodeURIComponent(session.speaker_name)}&background=0070d2&color=fff&size=48&bold=true`}
                           alt={session.speaker_name}
@@ -133,8 +133,8 @@ export default function AgendaPage() {
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <span className="text-sm text-gray-600">
-                        <span className="font-medium">{session.speaker_name}</span>
+                      <span className="text-sm text-white/60">
+                        <span className="font-medium text-white/80">{session.speaker_name}</span>
                         {session.speaker_company && ` · ${session.speaker_company}`}
                       </span>
                     </div>
@@ -142,12 +142,12 @@ export default function AgendaPage() {
 
                   {session.description && (
                     <>
-                      <p className={`text-sm text-gray-500 mt-2 leading-relaxed ${isOpen ? '' : 'line-clamp-2'}`}>
+                      <p className={`text-sm text-white/50 mt-2 leading-relaxed ${isOpen ? '' : 'line-clamp-2'}`}>
                         {session.description}
                       </p>
                       <button
                         onClick={() => toggleExpand(session.id)}
-                        className="text-xs text-[#0070D2] mt-1 hover:underline"
+                        className="text-xs text-[#5EB3FF] mt-1 hover:underline"
                       >
                         {isOpen ? 'Show less' : 'Read more'}
                       </button>

@@ -6,14 +6,14 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const variants = {
-  blue:   'bg-blue-50 text-blue-700 border-blue-100',
-  green:  'bg-green-50 text-green-700 border-green-100',
-  orange: 'bg-orange-50 text-orange-700 border-orange-100',
-  red:    'bg-red-50 text-red-700 border-red-100',
-  purple: 'bg-purple-50 text-purple-700 border-purple-100',
-  gray:   'bg-gray-50 text-gray-600 border-gray-100',
-  gold:   'bg-amber-50 text-amber-700 border-amber-100',
-  teal:   'bg-teal-50 text-teal-700 border-teal-100',
+  blue:   'bg-[#0070D2]/20 text-[#5EB3FF] border-[#0070D2]/30',
+  green:  'bg-green-500/15 text-green-400 border-green-500/25',
+  orange: 'bg-orange-500/15 text-orange-400 border-orange-500/25',
+  red:    'bg-red-500/15 text-red-400 border-red-500/25',
+  purple: 'bg-purple-500/15 text-purple-400 border-purple-500/25',
+  gray:   'bg-white/10 text-white/60 border-white/10',
+  gold:   'bg-amber-500/15 text-amber-400 border-amber-500/25',
+  teal:   'bg-teal-500/15 text-teal-400 border-teal-500/25',
 }
 
 export function Badge({ className, variant = 'blue', children, ...props }: BadgeProps) {

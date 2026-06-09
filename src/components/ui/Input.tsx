@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, TextareaHTMLAttributes, forwardRef } from 'react'
 import { cn } from '@/lib/utils'
 
-const inputBase = 'w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 transition-colors focus:border-[#0070D2] focus:outline-none focus:ring-1 focus:ring-[#0070D2] disabled:bg-gray-50 disabled:cursor-not-allowed'
+const inputBase = 'w-full rounded-xl border bg-white/[0.06] border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:border-[#0070D2] focus:outline-none focus:ring-1 focus:ring-[#0070D2] focus:bg-white/[0.08] disabled:opacity-50 disabled:cursor-not-allowed'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
@@ -10,15 +10,15 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, label, error, id, ...props }, ref) => (
-    <div className="space-y-1">
+    <div className="space-y-1.5">
       {label && (
-        <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+        <label htmlFor={id} className="block text-sm font-medium text-white/70">
           {label}
-          {props.required && <span className="text-red-500 ml-0.5">*</span>}
+          {props.required && <span className="text-red-400 ml-0.5">*</span>}
         </label>
       )}
-      <input ref={ref} id={id} className={cn(inputBase, error && 'border-red-400 focus:border-red-500 focus:ring-red-500', className)} {...props} />
-      {error && <p className="text-xs text-red-600">{error}</p>}
+      <input ref={ref} id={id} className={cn(inputBase, error && 'border-red-500 focus:border-red-500 focus:ring-red-500', className)} {...props} />
+      {error && <p className="text-xs text-red-400">{error}</p>}
     </div>
   )
 )
@@ -31,17 +31,17 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ className, label, error, id, children, ...props }, ref) => (
-    <div className="space-y-1">
+    <div className="space-y-1.5">
       {label && (
-        <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+        <label htmlFor={id} className="block text-sm font-medium text-white/70">
           {label}
-          {props.required && <span className="text-red-500 ml-0.5">*</span>}
+          {props.required && <span className="text-red-400 ml-0.5">*</span>}
         </label>
       )}
-      <select ref={ref} id={id} className={cn(inputBase, 'pr-8 appearance-none', error && 'border-red-400', className)} {...props}>
+      <select ref={ref} id={id} className={cn(inputBase, 'pr-8 appearance-none [color-scheme:dark]', error && 'border-red-500', className)} {...props}>
         {children}
       </select>
-      {error && <p className="text-xs text-red-600">{error}</p>}
+      {error && <p className="text-xs text-red-400">{error}</p>}
     </div>
   )
 )
@@ -54,15 +54,15 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, label, error, id, ...props }, ref) => (
-    <div className="space-y-1">
+    <div className="space-y-1.5">
       {label && (
-        <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+        <label htmlFor={id} className="block text-sm font-medium text-white/70">
           {label}
-          {props.required && <span className="text-red-500 ml-0.5">*</span>}
+          {props.required && <span className="text-red-400 ml-0.5">*</span>}
         </label>
       )}
-      <textarea ref={ref} id={id} className={cn(inputBase, 'resize-none', error && 'border-red-400', className)} {...props} />
-      {error && <p className="text-xs text-red-600">{error}</p>}
+      <textarea ref={ref} id={id} className={cn(inputBase, 'resize-none', error && 'border-red-500', className)} {...props} />
+      {error && <p className="text-xs text-red-400">{error}</p>}
     </div>
   )
 )

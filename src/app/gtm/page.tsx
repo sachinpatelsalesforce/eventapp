@@ -77,10 +77,10 @@ export default function GtmPage() {
 
       <div className="max-w-4xl mx-auto px-4 py-5">
         {/* Category filter */}
-        <div className="flex gap-2 overflow-x-auto pb-2 mb-4">
+        <div className="flex gap-2 overflow-x-auto pb-2 mb-4 scrollbar-hide">
           <button
             onClick={() => { setCategoryFilter(''); fetchIdeas() }}
-            className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium border ${!categoryFilter ? 'bg-[#0070D2] text-white border-[#0070D2]' : 'bg-white text-gray-600 border-gray-200'}`}
+            className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium border ${!categoryFilter ? 'bg-[#0070D2] text-white border-[#0070D2]' : 'bg-white/[0.06] text-white/60 border-white/10 hover:border-white/20'}`}
           >
             All
           </button>
@@ -88,7 +88,7 @@ export default function GtmPage() {
             <button
               key={c.key}
               onClick={() => { setCategoryFilter(c.key); fetchIdeas(c.key) }}
-              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium border ${categoryFilter === c.key ? 'bg-[#0070D2] text-white border-[#0070D2]' : 'bg-white text-gray-600 border-gray-200'}`}
+              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium border ${categoryFilter === c.key ? 'bg-[#0070D2] text-white border-[#0070D2]' : 'bg-white/[0.06] text-white/60 border-white/10 hover:border-white/20'}`}
             >
               {c.label}
             </button>
@@ -96,8 +96,9 @@ export default function GtmPage() {
         </div>
 
         {!contactId && (
-          <div className="mb-4 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-[#0070D2]">
-            <Link href="/contact" className="font-semibold hover:underline">Register</Link> to vote and submit ideas.
+          <div className="mb-4 bg-[#0070D2]/10 border border-[#0070D2]/20 rounded-2xl p-4 text-sm text-[#5EB3FF]">
+            <Link href="/contact" className="font-semibold hover:underline">Register</Link>
+            <span className="text-white/60"> to vote and submit ideas.</span>
           </div>
         )}
 
@@ -111,8 +112,8 @@ export default function GtmPage() {
                     disabled={!contactId}
                     className={`flex-shrink-0 flex flex-col items-center justify-center w-12 h-14 rounded-xl border-2 transition-all ${
                       idea.user_voted
-                        ? 'border-[#0070D2] bg-blue-50 text-[#0070D2]'
-                        : 'border-gray-200 text-gray-400 hover:border-gray-300'
+                        ? 'border-[#0070D2] bg-[#0070D2]/20 text-[#5EB3FF]'
+                        : 'border-white/10 text-white/30 hover:border-white/20'
                     } ${!contactId ? 'cursor-default' : 'cursor-pointer'}`}
                   >
                     <svg className="w-4 h-4" fill={idea.user_voted ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -125,16 +126,16 @@ export default function GtmPage() {
                       {categoryMeta(idea.category) && (
                         <Badge variant="blue">{categoryMeta(idea.category)!.label}</Badge>
                       )}
-                      <span className="text-xs text-gray-400">{idea.submitter_name}</span>
+                      <span className="text-xs text-white/30">{idea.submitter_name}</span>
                     </div>
-                    <h3 className="font-bold text-gray-900 text-sm">{idea.title}</h3>
-                    <p className="text-sm text-gray-500 mt-1 line-clamp-2">{idea.description}</p>
+                    <h3 className="font-bold text-white text-sm">{idea.title}</h3>
+                    <p className="text-sm text-white/50 mt-1 line-clamp-2">{idea.description}</p>
                   </div>
                 </div>
               </Card>
             ))}
             {ideas.length === 0 && (
-              <p className="text-center text-gray-400 py-8">No ideas yet — be the first!</p>
+              <p className="text-center text-white/30 py-8">No ideas yet — be the first!</p>
             )}
           </div>
         )}
@@ -145,13 +146,13 @@ export default function GtmPage() {
         <div className="flex gap-2 mb-4">
           <button
             onClick={() => setTab('template')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === 'template' ? 'bg-[#0070D2] text-white' : 'bg-gray-100 text-gray-600'}`}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === 'template' ? 'bg-[#0070D2] text-white' : 'bg-white/10 text-white/60 hover:bg-white/15'}`}
           >
             Use a Template
           </button>
           <button
             onClick={() => setTab('custom')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === 'custom' ? 'bg-[#0070D2] text-white' : 'bg-gray-100 text-gray-600'}`}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === 'custom' ? 'bg-[#0070D2] text-white' : 'bg-white/10 text-white/60 hover:bg-white/15'}`}
           >
             Custom Idea
           </button>
@@ -163,10 +164,10 @@ export default function GtmPage() {
               <button
                 key={t.id}
                 onClick={() => { setForm({ title: t.title, category: t.category, description: t.description }); setTab('custom') }}
-                className="w-full text-left p-3 rounded-lg border border-gray-100 hover:border-[#0070D2] hover:bg-blue-50 transition-colors"
+                className="w-full text-left p-3 rounded-lg border border-white/10 hover:border-[#0070D2] hover:bg-[#0070D2]/10 transition-colors"
               >
-                <p className="text-sm font-medium text-gray-900">{t.title}</p>
-                <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{t.description}</p>
+                <p className="text-sm font-medium text-white">{t.title}</p>
+                <p className="text-xs text-white/40 mt-0.5 line-clamp-1">{t.description}</p>
               </button>
             ))}
           </div>

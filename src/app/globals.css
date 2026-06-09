@@ -2,72 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root {
   --sf-blue: #0070D2;
-  --sf-blue-dark: #005FB2;
   --sf-navy: #032D60;
+  --app-bg: #061528;
+  --app-surface: #0D2137;
+  --app-surface-2: #162E4A;
+  --app-border: rgba(255,255,255,0.08);
+  --app-text: #ffffff;
+  --app-muted: #7BA4C7;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html {
   -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-gray-50 text-gray-900 font-sans;
+  background-color: var(--app-bg);
+  color: var(--app-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Admin area overrides — set in admin/layout.tsx via .admin-area class */
+.admin-area {
+  background-color: #f9fafb;
+  color: #111827;
 }
 
-/* Remove default button styles */
-button {
-  cursor: pointer;
-}
+button { cursor: pointer; }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #d1d5db;
-  border-radius: 2px;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+.admin-area ::-webkit-scrollbar-thumb { background: #d1d5db; }
 
-/* Focus styles */
-:focus-visible {
-  outline: 2px solid var(--sf-blue);
-  outline-offset: 2px;
-}
+/* Focus */
+:focus-visible { outline: 2px solid var(--sf-blue); outline-offset: 2px; }
 
-/* Utility classes */
-.pb-safe {
-  padding-bottom: max(1rem, env(safe-area-inset-bottom));
-}
+/* Utilities */
+.pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+.line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }

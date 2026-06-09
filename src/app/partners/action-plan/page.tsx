@@ -62,7 +62,7 @@ export default function ActionPlanPage() {
       <div>
         <Header title="Action Plan" back={{ href: '/partners', label: 'Partner Hub' }} />
         <div className="max-w-md mx-auto px-4 py-12 text-center">
-          <p className="text-gray-500 mb-4">Register to create your action plan.</p>
+          <p className="text-white/50 mb-4">Register to create your action plan.</p>
           <Link href="/contact"><Button>Register</Button></Link>
         </div>
       </div>
@@ -77,8 +77,8 @@ export default function ActionPlanPage() {
           <form onSubmit={handleSubmit} className="space-y-5">
             <Card className="p-5 space-y-4">
               <div>
-                <h2 className="font-bold text-gray-900 mb-1">Target Accounts</h2>
-                <p className="text-xs text-gray-400 mb-3">3 accounts you want to pursue after today</p>
+                <h2 className="font-bold text-white mb-1">Target Accounts</h2>
+                <p className="text-xs text-white/40 mb-3">3 accounts you want to pursue after today</p>
               </div>
               <Input label="Account 1" required id="acc1" value={form.target_account_1}
                 onChange={e => setForm(f => ({ ...f, target_account_1: e.target.value }))}
@@ -93,8 +93,8 @@ export default function ActionPlanPage() {
 
             <Card className="p-5 space-y-4">
               <div>
-                <h2 className="font-bold text-gray-900 mb-1">Joint Plays</h2>
-                <p className="text-xs text-gray-400 mb-3">2 GTM plays you'll run with Salesforce</p>
+                <h2 className="font-bold text-white mb-1">Joint Plays</h2>
+                <p className="text-xs text-white/40 mb-3">2 GTM plays you'll run with Salesforce</p>
               </div>
               <Textarea label="Play 1" required id="play1" rows={3} value={form.joint_play_1}
                 onChange={e => setForm(f => ({ ...f, joint_play_1: e.target.value }))}
@@ -105,7 +105,7 @@ export default function ActionPlanPage() {
             </Card>
 
             <Card className="p-5 space-y-4">
-              <h2 className="font-bold text-gray-900">Follow-Up</h2>
+              <h2 className="font-bold text-white">Follow-Up</h2>
               <Textarea label="Enablement need" required id="enablement" rows={2} value={form.enablement_need}
                 onChange={e => setForm(f => ({ ...f, enablement_need: e.target.value }))}
                 placeholder="What do you need from Salesforce to execute?" />
@@ -117,7 +117,7 @@ export default function ActionPlanPage() {
             </Card>
 
             {saved && (
-              <div className="bg-green-50 border border-green-200 rounded-xl p-3 text-sm text-green-700 text-center font-medium">
+              <div className="bg-green-500/15 border border-green-500/25 rounded-xl p-3 text-sm text-green-400 text-center font-medium">
                 Action plan saved!
               </div>
             )}

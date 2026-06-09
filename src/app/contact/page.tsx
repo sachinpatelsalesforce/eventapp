@@ -41,13 +41,13 @@ export default function ContactPage() {
       <div>
         <Header title="You're registered!" />
         <div className="max-w-md mx-auto px-4 py-12 text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome!</h2>
-          <p className="text-gray-500 mb-8">You're all set. Explore the app and make the most of today.</p>
+          <h2 className="text-2xl font-bold text-white mb-2">Welcome!</h2>
+          <p className="text-white/50 mb-8">You're all set. Explore the app and make the most of today.</p>
           <div className="space-y-3">
             <Link href="/agenda" className="block">
               <Button className="w-full" size="lg">View the Agenda</Button>
@@ -66,7 +66,7 @@ export default function ContactPage() {
       <Header title="Register" subtitle="Takes 30 seconds" />
       <div className="max-w-md mx-auto px-4 py-6">
         <Card className="p-6">
-          <p className="text-sm text-gray-500 mb-6">Register once to unlock Q&A, feedback, partner features, and your enablement passport.</p>
+          <p className="text-sm text-white/50 mb-6">Register once to unlock Q&A, feedback, partner features, and your enablement passport.</p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <Input
@@ -93,15 +93,15 @@ export default function ContactPage() {
             <label className="flex items-start gap-3 cursor-pointer">
               <input
                 type="checkbox"
-                className="mt-0.5 w-4 h-4 rounded border-gray-300 text-[#0070D2] focus:ring-[#0070D2]"
+                className="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/[0.06] text-[#0070D2] focus:ring-[#0070D2]"
                 checked={form.consent}
                 onChange={e => setForm(f => ({ ...f, consent: e.target.checked }))}
               />
-              <span className="text-sm text-gray-500 leading-snug">
-                I consent to my contact details being stored and used by the event organiser in accordance with their privacy policy. <span className="text-red-500">*</span>
+              <span className="text-sm text-white/50 leading-snug">
+                I consent to my contact details being stored and used by the event organiser in accordance with their privacy policy. <span className="text-red-400">*</span>
               </span>
             </label>
-            {error && <p className="text-sm text-red-600">{error}</p>}
+            {error && <p className="text-sm text-red-400">{error}</p>}
             <Button type="submit" loading={loading} className="w-full" size="lg">
               Register
             </Button>

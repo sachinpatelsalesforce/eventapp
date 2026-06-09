@@ -79,9 +79,9 @@ export default function PartnersHubPage() {
       <Header title="Partner Hub" subtitle="Your GTM engine for today" />
       <div className="max-w-4xl mx-auto px-4 py-5">
         {!contactId && (
-          <div className="mb-5 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm">
-            <Link href="/contact" className="text-[#0070D2] font-semibold hover:underline">Register your attendance</Link>
-            <span className="text-gray-600"> to unlock all partner features.</span>
+          <div className="mb-5 bg-[#0070D2]/10 border border-[#0070D2]/20 rounded-2xl p-4 text-sm">
+            <Link href="/contact" className="text-[#5EB3FF] font-semibold hover:underline">Register your attendance</Link>
+            <span className="text-white/60"> to unlock all partner features.</span>
           </div>
         )}
         {loading && contactId ? <LoadingSpinner /> : (
@@ -90,8 +90,8 @@ export default function PartnersHubPage() {
               <Link key={card.href} href={contactId ? card.href : '/contact'}>
                 <Card hover className="p-4 h-full relative">
                   <span className="text-2xl block mb-2">{card.icon}</span>
-                  <p className="font-bold text-gray-900 text-sm">{card.label}</p>
-                  <p className="text-xs text-gray-500 mt-0.5 leading-snug">{card.desc}</p>
+                  <p className="font-bold text-white text-sm">{card.label}</p>
+                  <p className="text-xs text-white/50 mt-0.5 leading-snug">{card.desc}</p>
                   {card.badge !== undefined && (
                     <span className="absolute top-3 right-3 bg-[#0070D2] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
                       {card.badge}
@@ -105,13 +105,13 @@ export default function PartnersHubPage() {
 
         {/* Polls quick link */}
         <Link href="/polls" className="mt-4 block">
-          <Card className="p-4 flex items-center gap-3 border-orange-200 bg-orange-50">
+          <Card className="p-4 flex items-center gap-3 bg-[#0070D2]/15 border-[#0070D2]/25">
             <span className="text-2xl">📊</span>
             <div className="flex-1">
-              <p className="font-bold text-gray-900 text-sm">Partner Pulse Polls</p>
-              <p className="text-xs text-gray-500">Live polls — vote now, see results instantly</p>
+              <p className="font-bold text-white text-sm">Partner Pulse Polls</p>
+              <p className="text-xs text-white/50">Live polls — vote now, see results instantly</p>
             </div>
-            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Card>

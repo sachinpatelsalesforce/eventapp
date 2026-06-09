@@ -7,7 +7,7 @@ import { CAPABILITIES, PARTNER_TIERS, REGIONS, INDUSTRIES } from '@/lib/constant
 import { Header } from '@/components/layout/Header'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
-import { Input, Select } from '@/components/ui/Input'
+import { Select } from '@/components/ui/Input'
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner'
 
 const tierColors: Record<string, 'gold' | 'gray' | 'orange' | 'blue'> = {
@@ -60,18 +60,18 @@ export default function PartnerDirectoryPage() {
 
         {loading ? <LoadingSpinner /> : (
           <>
-            <p className="text-sm text-gray-500 mb-3">{profiles.length} partner{profiles.length !== 1 ? 's' : ''} found</p>
+            <p className="text-sm text-white/40 mb-3">{profiles.length} partner{profiles.length !== 1 ? 's' : ''} found</p>
             <div className="grid gap-3 sm:grid-cols-2">
               {profiles.map(p => (
                 <Link key={p.id} href={`/partners/directory/${p.id}`}>
                   <Card hover className="p-4">
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <h3 className="font-bold text-gray-900">{p.si_name}</h3>
+                      <h3 className="font-bold text-white">{p.si_name}</h3>
                       <Badge variant={tierColors[p.partner_tier] ?? 'gray'}>
                         {PARTNER_TIERS.find(t => t.key === p.partner_tier)?.label ?? p.partner_tier}
                       </Badge>
                     </div>
-                    {p.bio && <p className="text-sm text-gray-500 line-clamp-2 mb-2">{p.bio}</p>}
+                    {p.bio && <p className="text-sm text-white/50 line-clamp-2 mb-2">{p.bio}</p>}
                     {p.capabilities.length > 0 && (
                       <div className="flex flex-wrap gap-1">
                         {p.capabilities.slice(0, 4).map(cap => {
@@ -86,14 +86,14 @@ export default function PartnerDirectoryPage() {
                       </div>
                     )}
                     {p.regions_covered.length > 0 && (
-                      <p className="text-xs text-gray-400 mt-2">{p.regions_covered.join(' · ')}</p>
+                      <p className="text-xs text-white/30 mt-2">{p.regions_covered.join(' · ')}</p>
                     )}
                   </Card>
                 </Link>
               ))}
             </div>
             {profiles.length === 0 && (
-              <div className="text-center py-12 text-gray-400">
+              <div className="text-center py-12 text-white/30">
                 <p>No partners match your filters.</p>
               </div>
             )}

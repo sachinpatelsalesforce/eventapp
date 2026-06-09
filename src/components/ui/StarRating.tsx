@@ -24,7 +24,7 @@ export function StarRating({ value, onChange, readonly = false, size = 'md' }: S
           <svg
             className={sizes[size]}
             fill={star <= value ? '#FF8300' : 'none'}
-            stroke={star <= value ? '#FF8300' : '#d1d5db'}
+            stroke={star <= value ? '#FF8300' : 'rgba(255,255,255,0.2)'}
             viewBox="0 0 24 24"
             strokeWidth={1.5}
           >

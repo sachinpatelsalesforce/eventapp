@@ -22,7 +22,7 @@ function MultiCheckbox({ options, selected, onChange, label }: {
   }
   return (
     <div>
-      <p className="text-sm font-medium text-gray-700 mb-2">{label}</p>
+      <p className="text-sm font-medium text-white/70 mb-2">{label}</p>
       <div className="flex flex-wrap gap-2">
         {options.map(o => (
           <button
@@ -31,7 +31,7 @@ function MultiCheckbox({ options, selected, onChange, label }: {
             className={`px-3 py-1.5 rounded-lg text-sm border transition-colors ${
               selected.includes(o.key)
                 ? 'bg-[#0070D2] text-white border-[#0070D2]'
-                : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+                : 'bg-white/[0.06] text-white/60 border-white/10 hover:border-white/20'
             }`}
           >
             {o.label}
@@ -52,21 +52,21 @@ function TagInput({ value, onChange, label, placeholder }: {
   }
   return (
     <div className="space-y-1">
-      <p className="text-sm font-medium text-gray-700">{label}</p>
+      <p className="text-sm font-medium text-white/70">{label}</p>
       <div className="flex gap-2">
         <input
           value={inputVal} onChange={e => setInputVal(e.target.value)}
           onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); add() } }}
           placeholder={placeholder}
-          className="flex-1 rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-[#0070D2] focus:outline-none"
+          className="flex-1 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2 text-sm text-white placeholder-white/30 focus:border-[#0070D2] focus:outline-none"
         />
         <Button type="button" variant="secondary" size="sm" onClick={add}>Add</Button>
       </div>
       <div className="flex flex-wrap gap-1.5 mt-1">
         {value.map(v => (
-          <span key={v} className="inline-flex items-center gap-1 bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">
+          <span key={v} className="inline-flex items-center gap-1 bg-white/10 text-white/70 text-xs px-2 py-1 rounded-full">
             {v}
-            <button type="button" onClick={() => onChange(value.filter(x => x !== v))} className="text-gray-400 hover:text-gray-600">×</button>
+            <button type="button" onClick={() => onChange(value.filter(x => x !== v))} className="text-white/40 hover:text-white/80">×</button>
           </span>
         ))}
       </div>
@@ -149,7 +149,7 @@ export default function PartnerProfilePage() {
       <div>
         <Header title="Partner Profile" back={{ href: '/partners', label: 'Partner Hub' }} />
         <div className="max-w-md mx-auto px-4 py-12 text-center">
-          <p className="text-gray-500 mb-4">Register first to create your partner profile.</p>
+          <p className="text-white/50 mb-4">Register first to create your partner profile.</p>
           <Button onClick={() => router.push('/contact')}>Register</Button>
         </div>
       </div>
@@ -166,18 +166,20 @@ export default function PartnerProfilePage() {
       <div className="max-w-2xl mx-auto px-4 py-6">
         <form onSubmit={handleSubmit} className="space-y-6">
           <Card className="p-5 space-y-4">
-            <h2 className="font-bold text-gray-900">Company Details</h2>
+            <h2 className="font-bold text-white">Company Details</h2>
             <Input label="SI / Company Name" required id="si_name" value={form.si_name}
               onChange={e => setForm(f => ({ ...f, si_name: e.target.value }))} />
             <div>
-              <p className="text-sm font-medium text-gray-700 mb-2">Partner Tier <span className="text-red-500">*</span></p>
+              <p className="text-sm font-medium text-white/70 mb-2">Partner Tier <span className="text-red-400">*</span></p>
               <div className="flex flex-wrap gap-2">
                 {PARTNER_TIERS.map(t => (
                   <button
                     key={t.key} type="button"
                     onClick={() => setForm(f => ({ ...f, partner_tier: t.key }))}
                     className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
-                      form.partner_tier === t.key ? 'bg-[#0070D2] text-white border-[#0070D2]' : `${t.color} border`
+                      form.partner_tier === t.key
+                        ? 'bg-[#0070D2] text-white border-[#0070D2]'
+                        : 'bg-white/[0.06] text-white/60 border-white/10 hover:border-white/20'
                     }`}
                   >
                     {t.label}
@@ -191,7 +193,7 @@ export default function PartnerProfilePage() {
           </Card>
 
           <Card className="p-5 space-y-4">
-            <h2 className="font-bold text-gray-900">Commerce Capabilities</h2>
+            <h2 className="font-bold text-white">Commerce Capabilities</h2>
             <MultiCheckbox
               label="Capability areas" options={CAPABILITIES}
               selected={form.capabilities}
@@ -210,7 +212,7 @@ export default function PartnerProfilePage() {
           </Card>
 
           <Card className="p-5 space-y-4">
-            <h2 className="font-bold text-gray-900">Markets & Customers</h2>
+            <h2 className="font-bold text-white">Markets & Customers</h2>
             <MultiCheckbox
               label="Regions covered" options={REGIONS.map(r => ({ key: r.key, label: r.label }))}
               selected={form.regions_covered}
@@ -229,7 +231,7 @@ export default function PartnerProfilePage() {
           </Card>
 
           <Card className="p-5 space-y-4">
-            <h2 className="font-bold text-gray-900">Salesforce Contacts</h2>
+            <h2 className="font-bold text-white">Salesforce Contacts</h2>
             <Input label="Account Executive (AE)" id="ae" value={form.sf_ae_name}
               onChange={e => setForm(f => ({ ...f, sf_ae_name: e.target.value }))}
               placeholder="Your Salesforce AE name" />
@@ -239,7 +241,7 @@ export default function PartnerProfilePage() {
           </Card>
 
           <Card className="p-5 space-y-4">
-            <h2 className="font-bold text-gray-900">Links</h2>
+            <h2 className="font-bold text-white">Links</h2>
             <Input label="AppExchange listing URL" id="appex" type="url" value={form.app_exchange_url}
               onChange={e => setForm(f => ({ ...f, app_exchange_url: e.target.value }))}
               placeholder="https://appexchange.salesforce.com/…" />
@@ -248,10 +250,16 @@ export default function PartnerProfilePage() {
               placeholder="https://…" />
           </Card>
 
+          {saved && (
+            <div className="bg-green-500/15 border border-green-500/25 rounded-xl p-3 text-sm text-green-400 text-center font-medium">
+              Profile saved!
+            </div>
+          )}
+
           <div className="flex gap-3">
             <Button type="button" variant="secondary" onClick={() => router.push('/partners')} className="flex-1">Cancel</Button>
             <Button type="submit" loading={saving} className="flex-1">
-              {saving ? 'Saving…' : saved ? 'Saved!' : profile ? 'Save Changes' : 'Create Profile'}
+              {saving ? 'Saving…' : profile ? 'Save Changes' : 'Create Profile'}
             </Button>
           </div>
         </form>

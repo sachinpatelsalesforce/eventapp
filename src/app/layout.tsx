@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { BottomNav } from '@/components/layout/BottomNav'
 import { SettingsProvider } from '@/contexts/SettingsContext'
@@ -6,8 +6,13 @@ import { SettingsProvider } from '@/contexts/SettingsContext'
 export const metadata: Metadata = {
   title: 'Commerce Connect',
   description: 'The partner GTM engine for Salesforce Commerce events',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
-  themeColor: '#0070D2',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: '#061528',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
