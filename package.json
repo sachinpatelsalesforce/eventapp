@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && cp -r .next/static .next/standalone/.next/static && cp -r public .next/standalone/public",
     "start": "next start",
     "db:migrate": "psql $DATABASE_URL -f src/db/schema.sql",
     "db:seed": "psql $DATABASE_URL -f src/db/seed.sql",
